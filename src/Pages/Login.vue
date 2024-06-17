@@ -23,6 +23,7 @@
       
 
       <div v-if="showCreateAccountForm" class="createAccount-container">
+        
         <p>Create a new profile</p>
         <input v-model="firstName" type="text" placeholder="First Name" />
         <input v-model="lastName" type="text" placeholder="Last Name" />
@@ -71,6 +72,8 @@ export default {
       showloginForm: true,
       isLoggedIn: false,
       isAdminLoggedIn: false,
+      
+      
     };
   },
   methods: {
@@ -144,9 +147,13 @@ export default {
             })
               .then((response) => response.json())
               .then((newUser) => {
-                this.fetchUsers();
+                this.fetchUsers;
+                this.$router.push({ name: "Login" });
+
                 console.warn(newUser);
                 
+                alert("Sign Up successful. Please log in. ")
+                this.showCreateAccountForm=false
                 this.showloginForm = true;
               })
               .catch((error) => {
@@ -160,6 +167,7 @@ export default {
 </script>
 
 <style>
+
 .container {
   display: flex;
   justify-content: center;
